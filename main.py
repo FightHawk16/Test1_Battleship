@@ -107,6 +107,7 @@ def get_attack_on_board(attack_history):
     while True:
         attack_position = random.randint(1, 10), random.randint(1, 10)
         if attack_position not in attack_history:
+            print(f"The hit position is {attack_position}")
             return attack_position
 
 def check_ship_hit(ships_positions):
@@ -136,12 +137,13 @@ def get_running_times():
 def main():
     time_usage = []
     times = get_running_times()
+    count_times=0
 
-    while times > 0:
+    while count_times < times:
         ships_positions = get_ship_positions(["carrier", "battleship", "cruiser", "submarine", "destroyer"])
         start_time = time.time()  # Record start time
-        game_stage = check_ship_hit(ships_positions)
-        times -= 1
+        print(f"this is {count_times} times, and {check_ship_hit(ships_positions)}")
+        count_times += 1
         end_time = time.time()  # Record end time
         time_usage.append(end_time - start_time)
     print(sum(time_usage) / len(time_usage))
