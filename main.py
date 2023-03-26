@@ -23,50 +23,39 @@ def get_ship_position(ship_lenght, place_ship, direction_extend_ship):
     return position_ship
 
 def check_ship_position_no_same(ships_position,ship_position):
-    ship_position in ships_position
-    for i in ship_position:
-        for b in ships_position:
-            for c in i:
-                for h in b:
-                    print(c)
-                    print(h)
-                    print(c==h)
+    for split_shipPosition in ship_position:
+        for split_shipsPosition in ships_position:
+            for split_splitShipPosition in split_shipPosition:
+                for split_splitShipsPosition in split_shipsPosition:
+                    if split_splitShipPosition == split_splitShipsPosition:
+                        return True
+    return False
 
-a1=check_ship_position_no_same([[(2, 1), (2, 0), (2, -1), (2, -2), (2, -3),(3,1)]],[[(3, 1), (3, 2), (3, 3), (3, 4)]])
+def get_ship_positions(ship_types):
+    all_ship_positions = []
 
+    for ship in ship_types:
+        place_ship = random.choice(["vertically", "horizontally"])
+        direction_extend_ship = random.choice(["-", "+"])
 
-# def get_ship_positions(ship_types):
-#     all_ship_positions = []
+        if ship == "destroyer":
+            similiar_check=True
+            while similiar_check==False:
+                ship_position=get_ship_position(2, place_ship, direction_extend_ship)
+                check_ship_position_no_same(all_ship_positions,ship_position)
+                if check_ship_position_no_same == False:
+                    similiar_check=False
+                
+        elif ship == "submarine":
+            all_ship_positions.append(get_ship_position(3, place_ship, direction_extend_ship))
+        elif ship == "cruiser":
+            all_ship_positions.append(get_ship_position(3, place_ship, direction_extend_ship))
+        elif ship == "battleship":
+            all_ship_positions.append(get_ship_position(4, place_ship, direction_extend_ship))
+        elif ship == "carrier":
+            all_ship_positions.append(get_ship_position(5, place_ship, direction_extend_ship))
 
-#     for ship in ship_types:
-#         place_ship = random.choice(["vertically", "horizontally"])
-#         direction_extend_ship = random.choice(["-", "+"])
+    return all_ship_positions
 
-#         if ship == "destroyer":
-#             ship_position=get_ship_position(2, place_ship, direction_extend_ship)
-            
-#         elif ship == "submarine":
-#             all_ship_positions.append(get_ship_position(3, place_ship, direction_extend_ship))
-#         elif ship == "cruiser":
-#             all_ship_positions.append(get_ship_position(3, place_ship, direction_extend_ship))
-#         elif ship == "battleship":
-#             all_ship_positions.append(get_ship_position(4, place_ship, direction_extend_ship))
-#         elif ship == "carrier":
-#             all_ship_positions.append(get_ship_position(5, place_ship, direction_extend_ship))
-
-#     return all_ship_positions
-
-# ship_ready = get_ship_positions(["carrier", "battleship", "cruiser", "submarine", "destroyer"])
-# print(ship_ready)
-
-# history=[]
-
-# for simulate in range(10):
-#     vertically_input=random.randint(1,11)
-#     horizontally_input=random.randint(1,11)
-    
-#     history.append((vertically_input,horizontally_input))
-
-
-#     print(vertically_input in board_size[0], horizontally_input in board_size[1])
-#     print(history)
+ship_ready = get_ship_positions(["carrier", "battleship", "cruiser", "submarine", "destroyer"])
+print(ship_ready)
