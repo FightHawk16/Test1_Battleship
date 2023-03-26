@@ -22,28 +22,42 @@ def get_ship_position(ship_lenght, place_ship, direction_extend_ship):
 
     return position_ship
 
-def get_ship_positions(ship_types):
-    all_ship_positions = []
+def check_ship_position_no_same(ships_position,ship_position):
+    ship_position in ships_position
+    for i in ship_position:
+        for b in ships_position:
+            for c in i:
+                for h in b:
+                    print(c)
+                    print(h)
+                    print(c==h)
 
-    for ship in ship_types:
-        place_ship = random.choice(["vertically", "horizontally"])
-        direction_extend_ship = random.choice(["-", "+"])
+a1=check_ship_position_no_same([[(2, 1), (2, 0), (2, -1), (2, -2), (2, -3),(3,1)]],[[(3, 1), (3, 2), (3, 3), (3, 4)]])
 
-        if ship == "destroyer":
-            all_ship_positions.append(get_ship_position(2, place_ship, direction_extend_ship))
-        elif ship == "submarine":
-            all_ship_positions.append(get_ship_position(3, place_ship, direction_extend_ship))
-        elif ship == "cruiser":
-            all_ship_positions.append(get_ship_position(3, place_ship, direction_extend_ship))
-        elif ship == "battleship":
-            all_ship_positions.append(get_ship_position(4, place_ship, direction_extend_ship))
-        elif ship == "carrier":
-            all_ship_positions.append(get_ship_position(5, place_ship, direction_extend_ship))
 
-    return all_ship_positions
+# def get_ship_positions(ship_types):
+#     all_ship_positions = []
 
-ship_ready = get_ship_positions(["carrier", "battleship", "cruiser", "submarine", "destroyer"])
-print(ship_ready)
+#     for ship in ship_types:
+#         place_ship = random.choice(["vertically", "horizontally"])
+#         direction_extend_ship = random.choice(["-", "+"])
+
+#         if ship == "destroyer":
+#             ship_position=get_ship_position(2, place_ship, direction_extend_ship)
+            
+#         elif ship == "submarine":
+#             all_ship_positions.append(get_ship_position(3, place_ship, direction_extend_ship))
+#         elif ship == "cruiser":
+#             all_ship_positions.append(get_ship_position(3, place_ship, direction_extend_ship))
+#         elif ship == "battleship":
+#             all_ship_positions.append(get_ship_position(4, place_ship, direction_extend_ship))
+#         elif ship == "carrier":
+#             all_ship_positions.append(get_ship_position(5, place_ship, direction_extend_ship))
+
+#     return all_ship_positions
+
+# ship_ready = get_ship_positions(["carrier", "battleship", "cruiser", "submarine", "destroyer"])
+# print(ship_ready)
 
 # history=[]
 
